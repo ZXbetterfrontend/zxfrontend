@@ -1,4 +1,4 @@
-# yc_system_frontend
+﻿# yc_system_frontend
 
 > A Vue.js project
 
@@ -29,4 +29,4 @@ npm test
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 #### 介绍
-此版本是测试环境搭建
+此版本是测试环境搭建, edit test
