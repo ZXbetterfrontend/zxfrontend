@@ -36,12 +36,12 @@ export default new Router({
     },
     {
       path: '/historysearch',
-      name: '综合查询',
+      name: '商品详情',
       component: HistorySearch
     },
     {
       path: '/analysis',
-      name: '统计分析',
+      name: '历史记录',
       component: Analysis
     },
     {
