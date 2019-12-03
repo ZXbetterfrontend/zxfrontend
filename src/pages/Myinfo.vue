@@ -1,6 +1,6 @@
 <template>
   <div>
-    商品详情
+    我的
   </div>
 </template>
 

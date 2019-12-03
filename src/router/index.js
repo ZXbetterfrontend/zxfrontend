@@ -6,6 +6,9 @@ import Login from '@/pages/Login'
 import Details from '@/pages/Details'
 import shoppingCart from '@/pages/shoppingCart'
 import Administrators from '@/pages/Administrators'
+import Goods from '@/pages/Goods.vue'
+import MyInfo from '@/pages/Myinfo.vue'
+
 Vue.use(Router)
 
 export default new Router({
@@ -18,18 +21,29 @@ export default new Router({
     {
       path: '/home',
       name: 'Home',
-      component: Home
+      component: Home,
+      children: [
+        {
+          path: '',
+          component: Goods,
+          name: 'Goods'
+        },
+        {
+          path: '/shoppingCart',
+          component: shoppingCart
+        },
+        {
+          path: '/myinfo',
+          component: MyInfo
+        }
+      ]
     },
     {
       path: '/details',
       name: 'Details',
       component: Details
     },
-    {
-      path: '/shoppingcart',
-      name: 'shoppingCart',
-      component: shoppingCart
-    },
+    
     {
       path: '/dministrators',
       name: 'Administrators',

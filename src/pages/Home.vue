@@ -2,17 +2,26 @@
   <div>
     <div class="header-bar">
       <el-row type="flex" justify="end">
-        
         <el-col :span="2"><div class="grid-content shopping-cart ">
-          <div class="shopping-cart el-icon-shopping-cart-full"></div></div></el-col>
+          <div class="shopping-cart el-icon-shopping-cart-full" @click="jumpToCart"></div></div></el-col>
           <el-col :span="3">
-          <div class="grid-content user-container">
+          <div class="grid-content user-container" @click="jumpToMyinfo">
             <div><el-avatar icon="el-icon-user-solid"></el-avatar></div> 
             <div class="user-container">{{username}}</div>
           </div>
         </el-col>
-      </el-row>
+      </el-row> 
     </div>
+
+     <div class="goods-container">
+        <div class="goods-left"></div>
+        <div class="goods-middle">
+          <transition>   
+            <router-view></router-view>
+          </transition>
+        </div>
+        <div class="goods-right"></div>
+      </div>
   </div>
 </template>
 
@@ -22,6 +31,14 @@ export default {
     return {
       circleUrl: "https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png",
       username: 'kino'
+    }
+  },
+  methods: {
+    jumpToCart() {
+      this.$router.push('/shoppingCart')
+    },
+    jumpToMyinfo() {
+      this.$router.push('/myinfo')
     }
   }
 }
@@ -53,5 +70,31 @@ export default {
   height: 100%;
   color: #eee;
   font-size: 31px
+}
+
+.goods-container {
+  /* margin: 75px 0 0 0; */
+  padding: 55px 0 0 0;
+  width: 100%;
+  /* background-color: red; */
+  display: flex;
+}
+.goods-left {
+  /* background-color: yellowgreen; */
+  height: 400px;
+  min-width: 100px;
+  flex-grow: 2;
+}
+.goods-middle {
+ /* background-color: #eee; */
+ width: 1200px;
+ height: 400px;
+ 
+}
+.goods-right {
+  /* background-color: yellowgreen; */
+  height: 400px;
+  min-width: 100px;
+  flex-grow: 2;
 }
 </style>
