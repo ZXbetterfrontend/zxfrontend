@@ -30,7 +30,7 @@
     </div>
     </div>
     <div class="order">交易明细
-      <div style="margin-top: 20px">
+      <div style="margin-top: 10px">
       <el-table :data="orderData" height="300" border style="width: 100%">
         <el-table-column type="index" label="序号" width="50px"></el-table-column>
         <el-table-column prop="order" label="订单号"></el-table-column>
@@ -134,47 +134,49 @@ export default {
 <style>
   .myinfo{
     padding-left: 20px;
-    padding-top:80px;
+    padding-top:40px;
     font-size: 25px;
   }
   .order{
     padding-left: 20px;
     font-size: 25px;
+    padding-top:20px;
   }
   .user-detail{
     padding-left: 55px;
   }
   .id{
     font-size: 20px;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
+    padding-top: 10px;
   }
   .id-left{
     float:left;
   }
   .name{
     font-size: 20px;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
    }
   .name-left{
     float:left;
   }
   .rank{
     font-size: 20px;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
   }
   .rank-left{
     float: left;
   }
   .score{
     font-size: 20px;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
   }
   .score-left{
     float: left;
   }
   .property{
     font-size: 20px;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
   }
   .property-left{
     float: left;
