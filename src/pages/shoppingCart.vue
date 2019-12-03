@@ -16,6 +16,7 @@
                           <br/>
                           <span style="color:#999;display: block; text-align: center;">库存{{scope.row.num}}件</span>
                         </template>
+
       </el-table-column>
       <el-table-column label="单价(人民币)" prop="price"></el-table-column>
       <el-table-column label="总价(人民币)" prop="totalPrice"></el-table-column>
@@ -84,9 +85,11 @@
     </div>
     <div style="float: right;padding-top: 20px">
 
+
       <el-checkbox v-model="checked">同意并阅读<a href="#">《购买须知》</a>进行购买</el-checkbox>
        <el-button :disabled="!checked" @click="buy()" round type="success">购买</el-button>
       <el-button round type="danger">批量删除</el-button>
+
 
     </div>
   </div>
@@ -129,6 +132,7 @@ export default {
           label:"高新区网点"
         }
       ]
+
     }
   },
 

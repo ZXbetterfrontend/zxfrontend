@@ -1,10 +1,12 @@
 <template>
-  <div>
+  <div class="home-contianer">
     <div class="header-bar">
       <el-row type="flex" justify="end">
+
         <el-col :span="2"><div class="grid-content shopping-cart ">
-          <div class="shopping-cart el-icon-shopping-cart-full" @click="jumpToCart"></div></div></el-col>
+          <div class="shopping-cart " ></div></div></el-col>
           <el-col :span="3">
+
           <div class="grid-content user-container" @click="jumpToMyinfo">
             <div><el-avatar icon="el-icon-user-solid"></el-avatar></div> 
             <div class="user-container">{{username}}</div>
@@ -13,15 +15,19 @@
       </el-row> 
     </div>
 
-     <div class="goods-container">
-        <div class="goods-left"></div>
-        <div class="goods-middle">
-          <transition>   
-            <router-view></router-view>
-          </transition>
-        </div>
-        <div class="goods-right"></div>
+    <div class="goods-container">
+      <div class="goods-left"></div>
+      <div class="goods-middle">
+        <transition :name="transitionName">   
+          <router-view></router-view>
+        </transition>
       </div>
+      <div class="goods-right"></div>
+    </div>
+
+    <div @click="jumpToHome" class="home-button el-icon-s-home">
+      
+    </div>
   </div>
 </template>
 
@@ -30,7 +36,19 @@ export default {
   data () {
     return {
       circleUrl: "https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png",
-      username: 'kino'
+      username: 'kino',
+      transitionName:''
+    }
+  },
+  watch: {//使用watch 监听$router的变化
+    $route(to, from) {
+      //如果to索引大于from索引,判断为前进状态,反之则为后退状态
+      if(to.meta.index > from.meta.index){
+	    //设置动画名称
+        this.transitionName = 'slide-left';
+      }else{
+        this.transitionName = 'slide-right';
+      }
     }
   },
   methods: {
@@ -39,12 +57,18 @@ export default {
     },
     jumpToMyinfo() {
       this.$router.push('/myinfo')
+    },
+    jumpToHome() {
+      this.$router.push('/home')
     }
   }
 }
 </script>
 
 <style>
+.home-contianer {
+  position: relative;
+}
 .header-bar {
   width: 100%;
   height: 60px;
@@ -61,6 +85,7 @@ export default {
 .user-container {
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 .user-container div {
   margin: 0px 0px 0px 20px;
@@ -97,4 +122,50 @@ export default {
   min-width: 100px;
   flex-grow: 2;
 }
+
+.home-button {
+  position: fixed;
+  bottom: 50px;
+  right: 100px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #C0C4CC;
+  font-size: 24px;
+  text-align: center;
+  line-height: 37px;
+  color: #fff;
+  cursor: pointer;
+}
+
+
+
+
+
+
+.slide-right-enter-active,
+.slide-right-leave-active,
+.slide-left-enter-active,
+.slide-left-leave-active {
+  will-change: transform;
+  transition: all 500ms;
+  position: absolute;
+}
+.slide-right-enter {
+  opacity: 0;
+  transform: translate3d(-100%, 0, 0);
+}
+.slide-right-leave-active {
+  opacity: 0;
+  transform: translate3d(100%, 0, 0);
+}
+.slide-left-enter {
+  opacity: 0;
+  transform: translate3d(100%, 0, 0);
+}
+.slide-left-leave-active {
+  opacity: 0;
+  transform: translate3d(-100%, 0, 0);
+}
+
 </style>
