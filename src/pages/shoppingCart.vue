@@ -5,8 +5,8 @@
 		<el-table-column label="序号" type="index" width="60"></el-table-column>
 		<el-table-column label="订单号" prop="order" width="100"></el-table-column>
 		<el-table-column label="商品名" prop="name"></el-table-column>
-      <el-table-column label="数量" width="">
-        <template scope="scope">
+    <el-table-column label="数量" width="">
+        <template slot-scope="scope">
                           <el-input :max="scope.row.num" :min="1" :value="scope.row.count"
                                     @change="changeCount(scope.row)" v-model="scope.row.count">
                           <el-button @click="changeQuantity(scope.row,-1)" slot="prepend"><i class="el-icon-minus"></i></el-button>

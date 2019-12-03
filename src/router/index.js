@@ -30,7 +30,8 @@ export default new Router({
         },
         {
           path: '/details',
-          component: Details
+          component: Details,
+          name: 'Details'
         },
         {
           path: '/myinfo',
