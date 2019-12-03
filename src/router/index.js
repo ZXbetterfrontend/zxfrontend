@@ -43,6 +43,10 @@ export default new Router({
       name: 'Administrators',
       component: Administrators
     },
-
+    {
+      path: '/shoppingcart',
+      name: 'shoppingCart',
+      component: shoppingCart
+    },
   ]
 })

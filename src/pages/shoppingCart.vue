@@ -22,8 +22,8 @@
 
 	</el-table>
     <div style="float: right;padding-top: 20px">
-      <el-checkbox><a>《》</a></el-checkbox>
-       <el-button type="success" round @click="buy()" disabled>购买</el-button>
+      <el-checkbox  v-model="checked"><a>《》</a></el-checkbox>
+       <el-button type="success" round @click="buy()" :disabled="!checked">购买</el-button>
       <el-button type="danger" round>批量删除</el-button>
     </div>
   </div>
@@ -40,7 +40,8 @@ export default {
         count:1,
         date:'2020-5-5',
         totalPrice:12345
-      }]
+      }],
+      checked: false,
     }
   },
 
