@@ -6,6 +6,8 @@ import Login from '@/pages/Login'
 import Details from '@/pages/Details'
 import shoppingCart from '@/pages/shoppingCart'
 import Administrators from '@/pages/Administrators'
+
+
 Vue.use(Router)
 
 export default new Router({
@@ -31,7 +33,7 @@ export default new Router({
       component: shoppingCart
     },
     {
-      path: '/dministrators',
+      path: '/administrators',
       name: 'Administrators',
       component: Administrators
     },
