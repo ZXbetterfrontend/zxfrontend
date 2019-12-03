@@ -6,7 +6,7 @@
           <span>{{item.name}}</span>
           <el-button style="float: right; padding: 3px 0" type="text" @click=pucharse(item.tag)>购买</el-button>
         </div>
-        <div class="img-container"><img class="img-base" :src="item.path"  alt=""></div>
+        <div class="img-container" @click="jumpToDetail"><img class="img-base" :src="item.path"  alt=""></div>
       </el-card>
     </div>
     <el-dialog
@@ -143,6 +143,9 @@ export default {
     },
     handleClose() {
 
+    },
+    jumpToDetail() {
+      
     }
   }
 }

@@ -29,21 +29,15 @@ export default new Router({
           name: 'Goods'
         },
         {
-          path: '/shoppingCart',
-          component: shoppingCart
+          path: '/details',
+          component: Details
         },
         {
           path: '/myinfo',
           component: MyInfo
         }
       ]
-    },
-    {
-      path: '/details',
-      name: 'Details',
-      component: Details
-    },
-    
+    },    
     {
       path: '/dministrators',
       name: 'Administrators',
