@@ -3,10 +3,10 @@
     <el-table :data="itema"  ref="multipleTable">
 		<el-table-column type="selection" width="55" ></el-table-column>
 		<el-table-column type="index" label="序号" width="60"></el-table-column>
-		<el-table-column prop="order" label="订单号" width="100" :formatter="formatSex"></el-table-column>
+		<el-table-column prop="order" label="订单号" width="100" ></el-table-column>
 		<el-table-column prop="name" label="商品名"></el-table-column>
       <el-table-column label="数量" width="">
-        <template scope="scope">
+        <template slot-scope="scope">
                           <el-input v-model="scope.row.count" :value="scope.row.count"  @change="changeCount(scope.row)" :min="1" :max="scope.row.num" >
                           <el-button slot="prepend" @click="changeQuantity(scope.row,-1)"><i class="el-icon-minus"></i></el-button>
                           <el-button slot="append" @click="changeQuantity(scope.row,1)"><i class="el-icon-plus"></i></el-button>

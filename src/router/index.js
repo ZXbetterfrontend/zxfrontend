@@ -37,12 +37,16 @@ export default new Router({
           component: MyInfo
         }
       ]
-    },    
+    },
     {
       path: '/administrators',
       name: 'Administrators',
       component: Administrators
     },
-
+    {
+      path: '/shoppingcart',
+      name: 'shoppingCart',
+      component: shoppingCart
+    }
   ]
 })
