@@ -10,7 +10,7 @@
       <div class="name">
         <img src="http://q1x2lsqiy.bkt.clouddn.com/%E4%BA%A4%E6%98%93%E7%AE%A1%E7%90%86%20%281%29.png" style="float:left; height:25px; margin-right: 5px;">
         <div class="name-left">我的姓名:</div>
-        <div class="name-right">wsq</div>
+        <div class="name-right">kino</div>
       </div>
       <div class="rank">
         <img src="http://q1x2lsqiy.bkt.clouddn.com/%E7%AD%89%E7%BA%A7.png" style="float:left; height:25px; margin-right: 5px;">
