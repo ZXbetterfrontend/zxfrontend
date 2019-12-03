@@ -47,6 +47,10 @@ export default new Router({
       path: '/shoppingcart',
       name: 'shoppingCart',
       component: shoppingCart
+<<<<<<< HEAD
     }
+=======
+    },
+>>>>>>> fd7596b9123e07374abc4bc9e163ebd749f1946b
   ]
 })
