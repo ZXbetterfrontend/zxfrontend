@@ -8,6 +8,7 @@ import shoppingCart from '@/pages/shoppingCart'
 import Administrators from '@/pages/Administrators'
 import Goods from '@/pages/Goods.vue'
 import MyInfo from '@/pages/Myinfo.vue'
+import Figure from '@/pages/Figure.vue'
 
 Vue.use(Router)
 
@@ -43,6 +44,15 @@ export default new Router({
       name: 'Administrators',
       component: Administrators
     },
-
+    {
+      path: '/shoppingcart',
+      name: 'shoppingCart',
+      component: shoppingCart
+    },
+    {
+      path: '/figure',
+      name: 'Figure',
+      component: Figure
+    }
   ]
 })
