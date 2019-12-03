@@ -39,7 +39,7 @@ export default new Router({
       ]
     },    
     {
-      path: '/dministrators',
+      path: '/administrators',
       name: 'Administrators',
       component: Administrators
     },

@@ -2,9 +2,11 @@
   <div class="home-contianer">
     <div class="header-bar">
       <el-row type="flex" justify="end">
+
         <el-col :span="2"><div class="grid-content shopping-cart ">
           <div class="shopping-cart " ></div></div></el-col>
           <el-col :span="3">
+
           <div class="grid-content user-container" @click="jumpToMyinfo">
             <div><el-avatar icon="el-icon-user-solid"></el-avatar></div> 
             <div class="user-container">{{username}}</div>
