@@ -138,7 +138,7 @@ export default {
         {
           name: '建国七十周年纪念币',
           tag: 'panda',
-          path: require("http://q1x2lsqiy.bkt.clouddn.com/panda.jpg")
+          path: 'http://q1x2lsqiy.bkt.clouddn.com/panda.jpg'
         },
         {
           name: '2020鼠年梅花型币',
