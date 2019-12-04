@@ -2,15 +2,19 @@
   <div>
     <table>
       <div class="header-bar">
-        <el-row type="flex" justify="end">
-          <el-col align-items="left" style="color: #FFFFFF; margin: auto;float:left;font-size:x-large">中信银行贵金属理财宝</el-col>
-          <!-- <el-col :span="2">
-            <div class="grid-content shopping-cart ">
-              <div class="shopping-cart el-icon-shopping-cart-full">
-              </div>
-            </div>
-          </el-col> -->
-          <el-col :span="5" >
+        <el-row :span="1" type="flex" justify="end">
+
+          <el-col :span="1" style="float: left">
+             <el-image
+               style="width: 55px; height: 55px"
+               :src="url"
+               :fit="fit"
+             ></el-image>
+          </el-col>
+
+          <el-col :span="15"  style="color: #FFFFFF; margin: auto;font-size:x-large">中信银行贵金属理财宝</el-col>
+
+          <el-col :span="8" >
             <div class="grid-content user-container" style="float: right;margin-right: 20px;margin-top: 6px">
               <div>
                 <el-avatar icon="el-icon-user-solid"></el-avatar>
@@ -62,6 +66,8 @@ export default {
     return {
       circleUrl: "https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png",
       username: 'Administrator',
+      fits: ['fill'],
+      url: 'http://q1x2lsqiy.bkt.clouddn.com/logo.jpg',
       info: [{
         productName: '守护之羽',
         productId: '13488',
