@@ -7,15 +7,6 @@
 		<el-table-column prop="name" label="商品名"></el-table-column>
       <el-table-column label="数量" width="">
         <template slot-scope="scope">
-<<<<<<< HEAD
-                          <el-input v-model="scope.row.count" :value="scope.row.count"  @change="changeCount(scope.row)" :min="1" :max="scope.row.num" >
-                          <el-button slot="prepend" @click="changeQuantity(scope.row,-1)"><i class="el-icon-minus"></i></el-button>
-                          <el-button slot="append" @click="changeQuantity(scope.row,1)"><i class="el-icon-plus"></i></el-button>
-                          </el-input>
-                          <br/>
-                          <span style="color:#999;display: block; text-align: center;">库存{{scope.row.num}}件</span>
-                        </template>
-=======
           <el-input v-model="scope.row.count" :value="scope.row.count"  @change="changeCount(scope.row)" :min="1" :max="scope.row.num" >
           <el-button slot="prepend" @click="changeQuantity(scope.row,-1)"><i class="el-icon-minus"></i></el-button>
           <el-button slot="append" @click="changeQuantity(scope.row,1)"><i class="el-icon-plus"></i></el-button>
@@ -23,7 +14,6 @@
           <br/>
           <span style="color:#999;display: block; text-align: center;">库存{{scope.row.num}}件</span>
         </template>
->>>>>>> 7a4354c25b741582b67d287b59661e0a706fe45e
 
       </el-table-column>
       <el-table-column label="单价(人民币)" prop="price"></el-table-column>
