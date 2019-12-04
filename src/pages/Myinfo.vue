@@ -1,5 +1,6 @@
 <template>
   <div>
+
     <div class="myinfo">我的账户
       <div class="user-detail">
       <div class="id">
@@ -32,8 +33,10 @@
     <div class="recommend">产品推荐
       <el-carousel :interval="4000" type="card" height="200px" style="width: 400px">
         <el-carousel-item v-for="(item,index) in goods" :key="index">
-          <h3 class="medium">{{item.name}}</h3>
-          <img class="img-container" @click="jumpToDetail(item)" :src="item.url">
+          <el-row>
+
+            <el-col :span="24"><img class="img-container" @click="jumpToDetail(item)" :src="item.path"></el-col>
+          </el-row>
         </el-carousel-item>
       </el-carousel>
     </div>
