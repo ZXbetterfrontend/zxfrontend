@@ -1,50 +1,57 @@
 <template>
   <div style="margin-top: 50px">
-    <el-table :data="itema"  ref="multipleTable">
-		<el-table-column type="selection" width="55" ></el-table-column>
-		<el-table-column type="index" label="序号" width="60"></el-table-column>
-		<el-table-column prop="order" label="订单号" width="100" ></el-table-column>
-		<el-table-column prop="name" label="商品名"></el-table-column>
-      <el-table-column label="数量" width="">
-        <template slot-scope="scope">
-          <el-input v-model="scope.row.count" :value="scope.row.count"  @change="changeCount(scope.row)" :min="1" :max="scope.row.num" >
-          <el-button slot="prepend" @click="changeQuantity(scope.row,-1)"><i class="el-icon-minus"></i></el-button>
-          <el-button slot="append" @click="changeQuantity(scope.row,1)"><i class="el-icon-plus"></i></el-button>
-          </el-input>
-          <br/>
-          <span style="color:#999;display: block; text-align: center;">库存{{scope.row.num}}件</span>
-        </template>
+    <!-- <el-table :data="item">
+		<el-table-column prop="gid" label="商品id" width="100" ></el-table-column>
+		<el-table-column prop="gname" label="商品名"></el-table-column>
+    <el-table-column prop="gdescribe" label="描述" width="300"></el-table-column>
+    <el-table-column label="单价(人民币)" prop="gprice"></el-table-column>
+    <el-table-column label="数量">
+      <el-input-number size="small" v-model="count" @change="handleChange" :min="1" :max="10"></el-input-number>
+    </el-table-column>
+	</el-table> -->
+  <table  width="100%" style="border-collapse: collapse;">
+      <thead class="table-head">
+          <tr class="table-title" style="border-bottom:1px solid #EBEEF5">
+              <th>商品id</th>
+              <th>商品名</th>
+              <th>描述</th>
+              <th>单价(人民币)</th>
+              <th>数量</th>
 
-      </el-table-column>
-      <el-table-column label="单价(人民币)" prop="price"></el-table-column>
-      <el-table-column label="总价(人民币)" prop="totalPrice"></el-table-column>
+          </tr>
+      </thead>
 
-		<el-table-column label="日期" prop="date"></el-table-column>
-
-	</el-table>
+      <tbody>
+          <tr class="table-body" style="border-bottom:1px solid #EBEEF5">
+              <td>{{item.gid}}</td>
+              <td>{{item.gname}}</td>
+              <td>{{item.gdescribe}}</td>
+              <td>{{item.gprice}}</td>
+              <td><el-input-number size="small" v-model="count" @change="handleChange" :min="1" :max="10"></el-input-number></td>
+          </tr>
+      </tbody>
+  </table>
+  <div class="price-container">
+    ¥ <span class="total-pri">{{this.total}}</span>
+  </div>
     <div style="padding-top:20px" >
       <el-row style="padding-top: 20px">
         <el-col :span="24">
           配送方式:
-          <el-radio  v-model="mail" :label="1">自提</el-radio>
+          <el-radio  v-model="mail" label="1">自提</el-radio>
         </el-col>
         <el-col :span="24" style="padding-top: 20px">
-          <el-select v-model="value" placeholder="请选择网点" >
+          <el-select v-model="address" placeholder="请选择网点" >
             <el-option
-              v-for="item in net"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value">
+              v-for="item in alldress"
+              :key="item.bid"
+              :label="item.bname"
+              :value="item.bid">
             </el-option>
             </el-select>
         </el-col>
       </el-row>
-      <el-row style="padding-top: 20px">
-        <el-col :span="12">
-          电话号码:
-          <el-input placeholder="请输入电话号码"></el-input>
-        </el-col>
-      </el-row>
+    
       <el-row style="padding-top: 20px">
         <el-col :span="24">
           <el-radio v-model="radio" :label="0">不需要发票</el-radio>
@@ -56,7 +63,7 @@
           </el-row>
       <el-row style="padding-top: 20px">
           <el-col :span="24">
-            <el-select v-model="value" placeholder="请选择发票属性" :disabled="!radio">
+            <el-select v-model="invoice" placeholder="请选择发票属性" :disabled="!radio">
             <el-option
                 v-for="item in option"
                 :key="item.value"
@@ -75,7 +82,6 @@
             :rows="2"
             placeholder="请输入留言"
             v-model="textarea"
-
           >
           </el-input>
         </el-col>
@@ -85,8 +91,8 @@
 
 
       <el-checkbox v-model="checked">同意并阅读<a href="#">《购买须知》</a>进行购买</el-checkbox>
-       <el-button :disabled="!checked" @click="buy()" round type="success">购买</el-button>
-      <el-button round type="danger">批量删除</el-button>
+      <el-button :disabled="!checked" @click="buy()" round type="success">购买</el-button>
+      <!-- <el-button round type="danger">批量删除</el-button> -->
 
 
     </div>
@@ -96,18 +102,16 @@
 export default {
   data() {
     return {
-      itema: [{
-        order: 'dgf1234',
-        name: 'Zhangsan',
-        price: 12345,
-        num: 10,
-        count: 1,
-        state: 1,
-        date: '2020-5-5',
-        totalPrice: 12345
-      }],
+      count: "1",
+      total: 0,
+      item: {
+        gid:'',
+        gname: '',
+        gprice: 0,
+        gdescribe: ''
+      },
       checked: false,
-      mail:1,
+      mail: '1',
       textarea:"",
       radio:0,
       option:[{
@@ -120,7 +124,9 @@ export default {
           label:"股票期货"
         }
       ],
-      net:[{
+      address: '',
+      invoice: '',
+      alldress:[{
         value:1,
         label:"锦江区网点"
 
@@ -133,22 +139,54 @@ export default {
 
     }
   },
-
+  created() {
+    this.getAllAddress()
+    this.item = this.$route.query
+    this.handleChange()
+  },
   methods: {
+    getAllAddress() {
+      this.$axios.get('/api/branch/all').then(res => {
+        this.alldress = res.data.msg
+      })
+    },
     choose: function (index) {
       this.selected = index
     },
     buy: function () {
-      this.$alert('购买成功', '恭喜你', {
-        confirmButtonText: '确定',
-        callback: action => {
-          this.$message({
-            type: 'info',
-            message: `查看订单`
-          });
+      if (!this.address) {
+        this.$message({
+          message: '请选择网点再行购买',
+          type: 'error'
+        })
+      } else {
+        this.submitPurchase()
+      }
+    },
+    submitPurchase() {
+      this.$axios.post('/api/order/add',
+        {
+          pid: this.item.gid,
+          count: this.count,
+          bid: this.address
         }
-      });
-      this.$router.push("/home")
+      ).then(res => {
+        if (res.data.code === 0) {
+          this.$message({
+          message: res.data.msg,
+          type: 'error'
+          });
+        } else if (res.data.code === 1) {
+         this.$message({
+          message: '购买成功，谢谢您',
+          type: 'success'
+        });
+        this.$router.push("/home")
+        }
+      })
+    },
+    handleChange(){
+      this.total = this.count * this.item.gprice
     },
     changeQuantity(row, type) {
       if (type > 0) {
@@ -158,15 +196,7 @@ export default {
       }
       this.changeCount(row);
     },
-    //数量文本框值改变
-    changeCount(row) {
-      if (null == row.count || row.count == "") {
-        row.count = 1;
-      }
-      row.totalPrice = (row.count * row.price).toFixed(2);//保留两位小数
-      console.log(row.totalPrice + " = " + row.count + " * " + row.price)
-      //增加商品数量也需要重新计算商品总价
-    },
+    
 
   }
 
@@ -174,6 +204,32 @@ export default {
 </script>
 
 <style>
-
-
+.price-container {
+  margin: 20px 0 0 0;
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  font-size: 35px;
+  text-align: right;
+  color: #909399;
+}
+.total-pri {
+  color: #F56C6C;
+  font-size: 40px;
+}
+.table-head {
+}
+.table-title {
+  color: #909399;
+  text-align: left;
+  
+}
+.table-title th {
+  padding: 12px 5px;
+  
+}
+.table-body td {
+  padding: 12px 5px;
+  color: #606266
+}
 </style>

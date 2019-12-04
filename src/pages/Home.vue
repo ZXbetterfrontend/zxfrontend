@@ -4,13 +4,19 @@
       <el-row type="flex" justify="end">
 
         <el-col :span="2"><div class="grid-content shopping-cart ">
-          <div class="shopping-cart " ></div></div></el-col>
-          <el-col :span="3">
+          <div class="shopping-cart " ></div></div>
+        </el-col>
+        <el-col :span="3">
 
           <div class="grid-content user-container" @click="jumpToMyinfo">
             <div><el-avatar icon="el-icon-user-solid"></el-avatar></div> 
             <div class="user-container">{{username}}</div>
           </div>
+
+          
+        </el-col>
+         <el-col :span="2"><div class="grid-content  ">
+          <div class="login-out " @click="loginout">退出</div></div>
         </el-col>
       </el-row> 
     </div>
@@ -43,6 +49,7 @@ export default {
   watch: {//使用watch 监听$router的变化
     $route(to, from) {
       //如果to索引大于from索引,判断为前进状态,反之则为后退状态
+      console.log(123)
       if(to.meta.index > from.meta.index){
 	    //设置动画名称
         this.transitionName = 'slide-left';
@@ -51,15 +58,27 @@ export default {
       }
     }
   },
+  mounted() {
+    // console.log(this.$cookies.keys())
+    // console.log(document.cookie)
+    this.username = this.$store.state.name
+  },
   methods: {
     jumpToCart() {
       this.$router.push('/shoppingCart')
     },
     jumpToMyinfo() {
+      this.$store.commit('cleargid')
       this.$router.push('/myinfo')
     },
     jumpToHome() {
+      this.$store.commit('cleargid')
       this.$router.push('/home')
+    },
+    loginout() {
+      this.$store.commit('clearname')
+      this.$store.commit('cleargid')
+      this.$router.push('/')
     }
   }
 }
@@ -97,7 +116,14 @@ export default {
   color: #eee;
   font-size: 31px
 }
-
+.login-out {
+  height: 100%;
+  color: #eee;
+  font-size: 14px;
+  line-height: 48px;
+  vertical-align: middle;
+  cursor: pointer;
+}
 .goods-container {
   /* margin: 75px 0 0 0; */
   padding: 55px 0 0 0;

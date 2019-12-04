@@ -59,12 +59,38 @@ export default {
   methods: {
     loginIn() {
       console.log(this.loginForm)
-      if(this.loginForm.username == "userkino") {
-        this.$router.push('/home')
-
-      } else if (this.loginForm.username == 'admin') {
-        this.$router.push('/administrators')
-      }
+      this.$axios({
+        method: 'post',
+        url: 'api/user/login',
+        params: {
+          name: this.loginForm.username,
+          password: this.loginForm.password
+        }
+      }).then(res => {
+        console.log(res.data)
+        if (res.data.code === 2) {
+          this.$store.commit('setname',this.loginForm.username)
+          this.$router.push('/home')
+          this.$message({
+            type: 'success',
+            message: `登录成功`
+          });
+          
+        } else if (res.data.code == 1) {
+          this.$store.commit('setname',this.loginForm.username)
+          this.$router.push('/administrators')
+          this.$message({
+            type: 'success',
+            message: `登录成功`
+          });
+        } else {
+          this.$message({
+            type: 'error',
+            message: `登录失败${res.data.msg}`
+          });
+        }
+      })
+      
     }
   }
 }

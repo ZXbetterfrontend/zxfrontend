@@ -31,19 +31,17 @@
     </div>
     <div class="order">交易明细
       <div style="margin-top: 10px">
-      <el-table :data="orderData" height="300" border style="width: 100%">
+      <el-table :data="orderData" style="width: 100%">
         <el-table-column type="index" label="序号" width="50px"></el-table-column>
-        <el-table-column prop="order" label="订单号"></el-table-column>
-        <el-table-column prop="name" label="商品名" width="200px" ></el-table-column>
-        <el-table-column prop="number" label="商品数量" width="80px" ></el-table-column>
-        <el-table-column prop="price" label="单价(人民币)"></el-table-column>
-        <el-table-column prop="totalPrice" label="总价(人民币)"></el-table-column>
-        <el-table-column prop="date" label="日期" width="100px"></el-table-column>
-        <el-table-column prop="address" label="网点地址"></el-table-column>
+        <el-table-column prop="oid" label="订单号"></el-table-column>
+        <el-table-column prop="ogid" label="商品名" width="200px" ></el-table-column>
+        <el-table-column prop="ocount" label="商品数量" width="80px" ></el-table-column>
+        <el-table-column prop="oprice" label="单价(人民币)"></el-table-column>
+        <el-table-column prop="ototalprice" label="总价(人民币)"></el-table-column>
         <el-table-column prop="evaluate" label="订单评价">
           <div class="block">
             <el-rate
-              :value="parseInt(4)"
+              :value="randomstar()"
               :colors="colors">
             </el-rate>
           </div>
@@ -58,74 +56,22 @@
 export default {
   data () {
     return {
-      orderData: [{
-        order: 'zxyh20191205001',
-        name: '2020鼠年梅花型币',
-        number: 1,
-        price: 12345.00,
-        num:1,
-        date:'2019-12-5',
-        totalPrice:12345.00,
-        address:'中信银行成都草堂支行',
-        evaluate: null,
-      },
-        {
-          order: 'zxyh20191205002',
-          name: '中国经典钱币珍藏套装',
-          number: 2,
-          price: 2200.00,
-          num:2,
-          date:'2019-12-5',
-          totalPrice:4400.00,
-          address:'中信银行成都草堂支行',
-          evaluate: null,
-        },
-        {
-          order: 'zxyh20191205003',
-          name: '松鹤延年狼毫银毛笔',
-          number: 1,
-          price: 8888.00,
-          num:1,
-          date:'2019-12-5',
-          totalPrice:8888.00,
-          address:'中信银行成都草堂支行',
-          evaluate: null,
-        },
-        {
-          order: 'zxyh20191205004',
-          name: '2020鼠年梅花型币',
-          number: 1,
-          price: 12345.00,
-          num:1,
-          date:'2019-12-5',
-          totalPrice:12345.00,
-          address:'中信银行成都草堂支行',
-          evaluate: null,
-        },
-        {
-          order: 'zxyh20191205005',
-          name: '2020鼠年梅花型币',
-          number: 1,
-          price: 12345.00,
-          num:1,
-          date:'2019-12-5',
-          totalPrice:12345.00,
-          address:'中信银行成都草堂支行',
-          evaluate: null,
-        },
-        {
-          order: 'zxyh20191205006',
-          name: '2020鼠年梅花型币',
-          number: 1,
-          price: 12345.00,
-          num:1,
-          date:'2019-12-5',
-          totalPrice:12345.00,
-          address:'中信银行成都草堂支行',
-          evaluate: null,
-        }],
+      orderData: [],
       value2: null,
       colors: ['#99A9BF', '#F7BA2A', '#FF9900']
+    }
+  },
+  mounted() {
+    this.$axios({
+      method: 'get',
+      url: '/api/order/history'
+    }).then(res => {
+      this.orderData = res.data.msg
+    })
+  },
+  methods: {
+    randomstar() {
+      return (Math.floor(Math.random()*2) + 3)
     }
   }
 }
