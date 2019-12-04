@@ -3,19 +3,20 @@
     <table>
       <div class="header-bar">
         <el-row type="flex" justify="end">
-          <el-col align-items="left" style="color: #FFFFFF; margin: auto;">中信银行贵金属理财宝</el-col>
+          <el-col align-items="left" style="color: #FFFFFF; margin: auto;float:left;font-size:x-large">中信银行贵金属理财宝</el-col>
           <!-- <el-col :span="2">
             <div class="grid-content shopping-cart ">
               <div class="shopping-cart el-icon-shopping-cart-full">
               </div>
             </div>
           </el-col> -->
-          <el-col :span="5">
-            <div class="grid-content user-container">
+          <el-col :span="5" >
+            <div class="grid-content user-container" style="float: right;margin-right: 20px;margin-top: 6px">
               <div>
                 <el-avatar icon="el-icon-user-solid"></el-avatar>
               </div>
               <div class="user-container">{{username}}</div>
+              <div> <el-button type="text" @click="exita()">退出</el-button> </div>
             </div>
           </el-col>
         </el-row>
@@ -114,6 +115,9 @@ export default {
   }, // data()
 
   methods:{
+    exita:function(){
+      this.$router.push('/')
+    },
     operate1: function() {
       alert('delete successfully!')
     },
@@ -226,6 +230,7 @@ export default {
     this.drawLine();
     this.funnelChart();
   },
+
 } // export
 </script>
 
