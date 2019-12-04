@@ -43,11 +43,12 @@
       </div>
 
       <el-row type="flex" justify="center">
+        <el-col :span="1"></el-col>
         <el-col :span="12">
-          <div id="myChart" :style="{width: '500px', height: '400px'}"></div>
+          <div id="myChart" :style="{width: '640px', height: '480px'}"></div>
         </el-col>
         <el-col :span="12">
-          <div id="funnelchart" :style="{width: '500px', height: '400px'}"></div>
+          <div id="funnelchart" :style="{width: '640px', height: '480px'}"></div>
         </el-col>
       </el-row>
   </div>
@@ -132,9 +133,27 @@ export default {
       myChart.setOption({
           title: {
             text: '产品销售情况',
-            position: 'center',
+            left: 'center',
            },
-          tooltip: {},
+          tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+              type: 'cross',
+            }
+          },
+          toolbox: {
+            feature: {
+              dataView: {readOnly: false},
+              restore: {},
+              saveAsImage: {}
+            }
+          },
+          grid: {
+            x: 100,
+            y: 70,
+            x2: 20,
+            y2: 30,
+          },
           xAxis: {
             type: 'category',
             data: ['May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov']
@@ -157,6 +176,7 @@ export default {
         title: {
           text: '漏斗图',
           subtext: '',
+          left: '5%',
 
         },
         tooltip: {
