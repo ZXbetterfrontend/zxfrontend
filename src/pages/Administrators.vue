@@ -2,11 +2,11 @@
   <div>
     <table>
       <div class="header-bar">
-        <el-row :span="1" type="flex" justify="end">
+        <el-row :span="2" type="flex" justify="end">
 
-          <el-col :span="1" style="float: left">
+          <el-col :span="1" >
              <el-image
-               style="width: 55px; height: 55px"
+               style="width: 40px; height: 40px;float: right;text-align: center;margin-top:8px;margin-right: 10px "
                :src="url"
                :fit="fit"
              ></el-image>
@@ -14,7 +14,7 @@
 
           <el-col :span="15"  style="color: #FFFFFF; margin: auto;font-size:x-large">中信银行贵金属理财宝</el-col>
 
-          <el-col :span="8" >
+          <el-col :span="7" >
             <div class="grid-content user-container" style="float: right;margin-right: 20px;margin-top: 6px">
               <div>
                 <el-avatar icon="el-icon-user-solid"></el-avatar>

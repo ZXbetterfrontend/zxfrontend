@@ -3,20 +3,25 @@
     <div class="header-bar">
       <el-row type="flex" justify="end">
 
-           <el-col :span="1" style="float: left">
+           <el-col :span="2"  >
+
              <el-image
-               style="width: 55px; height: 55px"
+               style="width: 40px; height: 40px;float: right;text-align: center;margin-top:8px;margin-right: 10px "
+
                :src="url"
                :fit="fit"
+
              ></el-image>
+
           </el-col>
+
 
           <el-col :span="15"  style="color: #FFFFFF; margin: auto;font-size:x-large">中信银行贵金属理财宝</el-col>
 
 
-          <el-col :span="8" >
+          <el-col :span="7" >
 
-          <div class="grid-content user-container" @click="jumpToMyinfo" style="float: right;margin-right: 10px" >
+          <div class="grid-content user-container" @click="jumpToMyinfo" style="float: right;margin-right: 10px;margin-top: 8px" >
             <div><el-avatar icon="el-icon-user-solid"></el-avatar></div>
             <div class="user-container">{{username}}</div>
           </div>
@@ -71,7 +76,8 @@ export default {
     },
     jumpToHome() {
       this.$router.push('/home')
-    }
+    },
+
   }
 }
 </script>
