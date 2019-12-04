@@ -1,19 +1,5 @@
 <template>
   <div style="margin-top: 50px">
-<<<<<<< HEAD
-    <el-table :data="itema" ref="multipleTable">
-		<el-table-column type="selection" width="55"></el-table-column>
-		<el-table-column label="序号" type="index" width="60"></el-table-column>
-		<el-table-column label="订单号" prop="order" width="100"></el-table-column>
-		<el-table-column label="商品名" prop="name"></el-table-column>
-    <el-table-column label="数量" width="">
-        <template slot-scope="scope">
-                          <el-input :max="scope.row.num" :min="1" :value="scope.row.count"
-                                    @change="changeCount(scope.row)" v-model="scope.row.count">
-                          <el-button @click="changeQuantity(scope.row,-1)" slot="prepend"><i class="el-icon-minus"></i></el-button>
-                          <el-button @click="changeQuantity(scope.row,1)" slot="append"><i
-                            class="el-icon-plus"></i></el-button>
-=======
     <el-table :data="itema"  ref="multipleTable">
 		<el-table-column type="selection" width="55" ></el-table-column>
 		<el-table-column type="index" label="序号" width="60"></el-table-column>
@@ -21,14 +7,13 @@
 		<el-table-column prop="name" label="商品名"></el-table-column>
       <el-table-column label="数量" width="">
         <template slot-scope="scope">
-                          <el-input v-model="scope.row.count" :value="scope.row.count"  @change="changeCount(scope.row)" :min="1" :max="scope.row.num" >
-                          <el-button slot="prepend" @click="changeQuantity(scope.row,-1)"><i class="el-icon-minus"></i></el-button>
-                          <el-button slot="append" @click="changeQuantity(scope.row,1)"><i class="el-icon-plus"></i></el-button>
->>>>>>> 80edc4cd3356977e0895f924e8f458f4544a71c3
-                          </el-input>
-                          <br/>
-                          <span style="color:#999;display: block; text-align: center;">库存{{scope.row.num}}件</span>
-                        </template>
+          <el-input v-model="scope.row.count" :value="scope.row.count"  @change="changeCount(scope.row)" :min="1" :max="scope.row.num" >
+          <el-button slot="prepend" @click="changeQuantity(scope.row,-1)"><i class="el-icon-minus"></i></el-button>
+          <el-button slot="append" @click="changeQuantity(scope.row,1)"><i class="el-icon-plus"></i></el-button>
+          </el-input>
+          <br/>
+          <span style="color:#999;display: block; text-align: center;">库存{{scope.row.num}}件</span>
+        </template>
 
       </el-table-column>
       <el-table-column label="单价(人民币)" prop="price"></el-table-column>
@@ -189,8 +174,6 @@ export default {
 </script>
 
 <style>
- .g-button {
 
- }
 
 </style>
