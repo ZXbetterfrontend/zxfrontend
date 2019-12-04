@@ -3,22 +3,31 @@
     <div class="header-bar">
       <el-row type="flex" justify="end">
 
-        <el-col :span="2"><div class="grid-content shopping-cart ">
-          <div class="shopping-cart " ></div></div></el-col>
-          <el-col :span="3">
+           <el-col :span="1" style="float: left">
+             <el-image
+               style="width: 55px; height: 55px"
+               :src="url"
+               :fit="fit"
+             ></el-image>
+          </el-col>
 
-          <div class="grid-content user-container" @click="jumpToMyinfo">
-            <div><el-avatar icon="el-icon-user-solid"></el-avatar></div> 
+          <el-col :span="15"  style="color: #FFFFFF; margin: auto;font-size:x-large">中信银行贵金属理财宝</el-col>
+
+
+          <el-col :span="8" >
+
+          <div class="grid-content user-container" @click="jumpToMyinfo" style="float: right;margin-right: 10px" >
+            <div><el-avatar icon="el-icon-user-solid"></el-avatar></div>
             <div class="user-container">{{username}}</div>
           </div>
         </el-col>
-      </el-row> 
+      </el-row>
     </div>
 
     <div class="goods-container">
       <div class="goods-left"></div>
       <div class="goods-middle">
-        <transition :name="transitionName">   
+        <transition :name="transitionName">
           <router-view></router-view>
         </transition>
       </div>
@@ -26,7 +35,7 @@
     </div>
 
     <div @click="jumpToHome" class="home-button el-icon-s-home">
-      
+
     </div>
   </div>
 </template>
@@ -37,7 +46,9 @@ export default {
     return {
       circleUrl: "https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png",
       username: 'kino',
-      transitionName:''
+      transitionName:'',
+      fits: ['fill'],
+      url: 'http://q1x2lsqiy.bkt.clouddn.com/logo.jpg',
     }
   },
   watch: {//使用watch 监听$router的变化
@@ -115,7 +126,7 @@ export default {
  /* background-color: #eee; */
  width: 1200px;
  height: 400px;
- 
+
 }
 .goods-right {
   /* background-color: yellowgreen; */
