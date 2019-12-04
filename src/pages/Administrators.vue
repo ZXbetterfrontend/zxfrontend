@@ -1,28 +1,25 @@
 <template>
-  <div>
-    <table>
-      <div class="header-bar">
-        <el-row type="flex" justify="end">
-          <el-col align-items="left" style="color: #FFFFFF; margin: auto;">Welcome {{username}}</el-col>
-          <el-col :span="2">
-            <div class="grid-content shopping-cart ">
-              <div class="shopping-cart el-icon-shopping-cart-full">
-              </div>
-            </div>
-          </el-col>
-          <el-col :span="5">
-            <div class="grid-content user-container">
-              <div>
-                <el-avatar icon="el-icon-user-solid"></el-avatar>
-              </div>
-              <div class="user-container">{{username}}</div>
-            </div>
-          </el-col>
-        </el-row>
-      </div>
-    </table>
+  <div class="home-contianer">
+    <div class="header-bar">
+      <el-row type="flex" justify="end">
 
-    <div class="admin-content">
+        <el-col align-items="left" style="color: #FFFFFF; margin: auto;">Welcome {{username}}</el-col>
+        <el-col :span="2">
+          <div class="grid-content shopping-cart ">
+            <div class="shopping-cart el-icon-shopping-cart-full"></div>
+          </div>
+        </el-col>
+
+        <el-col :span="5">
+          <div class="grid-content user-container">
+            <div><el-avatar icon="el-icon-user-solid"></el-avatar></div>
+            <div class="user-container">{{username}}</div>
+          </div>
+        </el-col>
+      </el-row>
+    </div>
+
+    <div type="flex" class="admin-content">
       <el-table :data="info" class="admin-content-table">
         <el-table-column label="商品名称" prop="productName"></el-table-column>
         <el-table-column label="产品ID" prop="productId"></el-table-column>
@@ -239,16 +236,20 @@ export default {
   }
   .admin-content {
     background-color: #FFFFFF;
-    margin-top:80px;
-    margin-bottom: 50px;
-    margin-left: 100px;
-    margin-right: 80px;
+
     position: relative;
   }
   .admin-content-table {
+    margin-top:80px;
+    margin-bottom: 50px;
+    margin-left: 50px;
+    margin-right: 50px;
+    position: relative;
     align-items: center;
   }
-
+  .home-contianer {
+    position: relative;
+  }
   .header-bar {
     width: 100%;
     height: 60px;
