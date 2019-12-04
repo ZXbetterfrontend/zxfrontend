@@ -23,7 +23,8 @@
       </div>
     </table>
 
-    <div class="admin-content">
+
+    <div type="flex" class="admin-content">
       <el-table :data="info" class="admin-content-table">
         <el-table-column label="商品名称" prop="productName"></el-table-column>
         <el-table-column label="产品ID" prop="productId"></el-table-column>
@@ -244,16 +245,20 @@ export default {
   }
   .admin-content {
     background-color: #FFFFFF;
-    margin-top:80px;
-    margin-bottom: 50px;
-    margin-left: 100px;
-    margin-right: 80px;
+
     position: relative;
   }
   .admin-content-table {
+    margin-top:80px;
+    margin-bottom: 50px;
+    margin-left: 50px;
+    margin-right: 50px;
+    position: relative;
     align-items: center;
   }
-
+  .home-contianer {
+    position: relative;
+  }
   .header-bar {
     width: 100%;
     height: 60px;
