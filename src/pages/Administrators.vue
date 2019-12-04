@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- 页面头部信息 -->
     <table>
       <div class="header-bar">
         <el-row type="flex" justify="end">
@@ -23,7 +24,7 @@
       </div>
     </table>
 
-
+    <!-- 销售产品列表模块 -->
     <div type="flex" class="admin-content">
       <el-table :data="info" class="admin-content-table">
         <el-table-column label="商品名称" prop="productName"></el-table-column>
@@ -41,8 +42,9 @@
           </template>
         </el-table-column>
       </el-table>
-      </div>
+    </div>
 
+      <!-- 图例显示模块 -->
       <el-row type="flex" justify="center">
         <el-col :span="1"></el-col>
         <el-col :span="12">
@@ -52,6 +54,41 @@
           <div id="funnelchart" :style="{width: '640px', height: '480px'}"></div>
         </el-col>
       </el-row>
+
+      <el-row class="add-info-bar">
+        <el-col align-items="left" style="color: #FFFFFF; margin-left: 10px; float: left;font-size:x-large">添加产品</el-col>
+      </el-row>
+
+      <!-- 添加产品信息模块 -->
+     <!-- <el-row>
+        <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm">
+          <el-form-item label="商品名称" prop="name">
+            <el-input v-model="ruleForm.name" placeholder="输入商品名称" clearable></el-input>
+          </el-form-item>
+          
+          <el-form-item label="商品规格" prop="spec">
+            <el-input v-model="ruleForm.spec" placeholder="输入商品规格" clearable></el-input>
+          </el-form-item>
+          <el-form-item label="商品系列" prop="series">
+            <el-input v-model="ruleForm.series" placeholder="输入商品系列" clearable></el-input>
+          </el-form-item>
+          <el-form-item label="商品材质" prop="texture">
+            <el-input v-model="ruleForm.texture" placeholder="输入商品材质" clearable></el-input>
+          </el-form-item>
+          <el-form-item label="商品发行量" prop="num">
+            <el-input v-model="ruleForm.num" placeholder="商品发行量" clearable></el-input>
+          </el-form-item>
+          <el-form-item label="商品单价" prop="price">
+            <el-input v-model="ruleForm.price" placeholder="输入商品单价" clearable></el-input>
+          </el-form-item>
+         
+          <el-form-item>
+            <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
+            <el-button @click="resetForm('ruleForm')">重置</el-button>
+          </el-form-item>
+
+        </el-form>
+      </el-row> -->
   </div>
 </template>
 
@@ -59,7 +96,96 @@
 <script type="text/javascript">
 export default {
   data () {
+// 与验证声明相关的变量
+    var validateName = (rule, value, callback) => {
+      if (value === '') {
+        callback(new Error('请输入商品名称'));
+      } else {
+        if (this.ruleForm.name !== '') {
+          this.$refs.ruleForm.validateField('name');
+        }
+        callback();
+      }
+    };
+    /*
+    var validateSpec = (rule, value, callback) => {
+      if (value === '') {
+        callback(new Error('请输入商品规格'));
+      } else {
+        if (this.ruleForm.spec !== '') {
+          this.$refs.ruleForm.validateField('spec');
+        }
+        callback();
+      }
+    };
+    var validateSpec = (rule, value, callback) => {
+      if (value === '') {
+        callback(new Error('请输入商品系列'));
+      } else {
+        if (this.ruleForm.series !== '') {
+          this.$refs.ruleForm.validateField('series');
+        }
+        callback();
+      }
+    };
+    var validateSpec = (rule, value, callback) => {
+      if (value === '') {
+        callback(new Error('请输入商品材质'));
+      } else {
+        if (this.ruleForm.texture !== '') {
+          this.$refs.ruleForm.validateField('texture');
+        }
+        callback();
+      }
+    };
+    var validateSpec = (rule, value, callback) => {
+      if (value === '') {
+        callback(new Error('请输入商品发行量'));
+      } else {
+        if (this.ruleForm.num !== '') {
+          this.$refs.ruleForm.validateField('num');
+        }
+        callback();
+      }
+    };
+    var validatePrice = (rule, value, callback) => {
+      if (value === '') {
+        callback(new Error('请输入商品价格'));
+      } else {
+        if (this.ruleForm.price !== '') {
+          this.$refs.ruleForm.validateField('price');
+        }
+        callback();
+      }
+    };
+    */
+// 与验证声明相关的变量end
+
     return {
+      //产品添加模块begin
+      ruleForm: {
+        name: '', // 商品名称
+        /*
+        spec: '', // 商品规格
+        series: '', // 商品系列
+        texture: '', // 商品材质
+        num: '', // 商品发行量
+        price: '' // 商品价格
+        */
+      },
+      rules: { // 验证规则声明
+        name: [{ validator: validateName, trigger: 'blur' }],
+        /*
+        spec: [{ validator: validateSpec, trigger: 'blur' }],
+        series: [{ validator: validateSeries, trigger: 'blur' }],
+        texture: [{ validator: validateTexture, trigger: 'blur' }],
+        num: [{ validator: validateNum, trigger: 'blur' }],
+        price: [{ validator: validatePrice, trigger: 'blur' }]
+        */
+        // 验证声明结束
+      },
+      //产品添加模块end
+
       circleUrl: "https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png",
       username: 'Administrator',
       info: [{
@@ -72,7 +198,6 @@ export default {
         sellDate: '2019-11-25',
         Operation: ''
       },
-
       {
         productName: '松鹤延年狼毫银毛笔',
         productId: '13477',
@@ -113,8 +238,8 @@ export default {
         sellDate: '2019-11-28',
         Operation: ''
       }],
-    }
-  }, // data()
+    } // return end
+  }, // data() end
 
   methods:{
     exita:function(){
@@ -245,7 +370,22 @@ export default {
           ]
       }); // myChart
     }, // drawLine
-  }, //methods
+
+    // 产品添加信息函数提交重置begin
+    submitForm(formName) {
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          alert('submit!');
+        } else {
+          console.log('error submit!!');
+          return false;
+        }
+      });
+    },
+    resetForm(formName) {
+      this.$refs[formName].resetFields();
+    } //产品添加信息函数提交重置end
+  }, //methods end
 
   mounted() {
     this.drawLine();
@@ -286,6 +426,17 @@ export default {
     background-color: #2d3a4b;
     box-shadow: 0px 0px 6px rgba(1,1,1,0.2);
     z-index: 100;
+  }
+  .add-info-bar {/* 添加产品样式*/
+    width: 100%;
+    height: 40px;
+    position: relative;
+    background-color: #2d3a4b;
+    box-shadow: 0px 0px 6px rgba(1,1,1,0.2);
+    z-index: 100;
+  }
+  .demo-ruleForm{
+    column-width: auto;
   }
   .grid-content  {
     margin: 0px 0px 0px 20px;
