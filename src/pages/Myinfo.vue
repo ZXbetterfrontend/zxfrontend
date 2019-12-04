@@ -29,6 +29,14 @@
       </div>
     </div>
     </div>
+    <div class="recommend">产品推荐
+      <el-carousel :interval="4000" type="card" height="200px" style="width: 400px">
+        <el-carousel-item v-for="(item,index) in goods" :key="index">
+          <h3 class="medium">{{item.name}}</h3>
+          <img class="img-container" @click="jumpToDetail(item)" :src="item.url">
+        </el-carousel-item>
+      </el-carousel>
+    </div>
     <div class="order">交易明细
       <div style="margin-top: 10px">
       <el-table :data="orderData" height="300" border style="width: 100%">
@@ -125,7 +133,55 @@ export default {
           evaluate: null,
         }],
       value2: null,
-      colors: ['#99A9BF', '#F7BA2A', '#FF9900']
+      colors: ['#99A9BF', '#F7BA2A', '#FF9900'],
+      goods: [
+        {
+          name: '建国七十周年纪念币',
+          tag: 'panda',
+          path: require("http://q1x2lsqiy.bkt.clouddn.com/panda.jpg")
+        },
+        {
+          name: '2020鼠年梅花型币',
+          tag: 'rats',
+          path: 'http://q1x2lsqiy.bkt.clouddn.com/rats.jpg'
+        },
+        {
+          name: '守护之羽',
+          tag: 'fly',
+          path: 'http://q1x2lsqiy.bkt.clouddn.com/fly.jpg'
+        },
+        {
+          name: '属你宝贝',
+          tag: 'baby',
+          path: 'http://q1x2lsqiy.bkt.clouddn.com/baby.jpg'
+        },
+        {
+          name: '松鹤延年狼毫银毛笔',
+          tag: 'wof',
+          path: 'http://q1x2lsqiy.bkt.clouddn.com/wof.jpg'
+        },
+        {
+          name: '中国经典钱币珍藏套装',
+          tag: 'classic',
+          path: 'http://q1x2lsqiy.bkt.clouddn.com/classic.jpg'
+        },
+        {
+          name: '中信银行四十周年纪念币',
+          tag: '40',
+          path: 'http://q1x2lsqiy.bkt.clouddn.com/40.jpg'
+        },
+        {
+          name: '中信金',
+          tag: 'gold',
+          path: 'http://q1x2lsqiy.bkt.clouddn.com/gold.jpg'
+        },
+      ],
+
+    }
+  },
+  methods: {
+    jumpToDetail(item) {
+      this.$router.push({path: '/details', query: {data: item}})
     }
   }
 }
@@ -135,6 +191,14 @@ export default {
   .myinfo{
     padding-left: 20px;
     padding-top:40px;
+    font-size: 25px;
+    width:600px;
+    position:relative;
+  }
+  .recommend{
+    position: absolute;
+    right: 300px;
+    top: 95px;
     font-size: 25px;
   }
   .order{
@@ -180,5 +244,26 @@ export default {
   }
   .property-left{
     float: left;
+  }
+  .el-carousel__item h3 {
+    color: #475669;
+    font-size: 14px;
+    opacity: 0.75;
+    line-height: 200px;
+    margin: 2px;
+  }
+
+
+  .el-carousel__item:nth-child(2n) {
+    background-color: #99a9bf;
+  }
+
+  .el-carousel__item:nth-child(2n+1) {
+    background-color: #d3dce6;
+  }
+  .img-container {
+    width: 400px;
+    height: 200px;
+    z-index: 100;
   }
 </style>
