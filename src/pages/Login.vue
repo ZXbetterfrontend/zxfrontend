@@ -8,7 +8,7 @@
 
       <el-form-item prop="username">
         <el-input
-        
+
           ref="username"
           v-model="loginForm.username"
           placeholder="Username"
@@ -21,7 +21,7 @@
       </el-form-item>
 
       <el-form-item prop="password">
-        
+
         <el-input
           ref="password"
           v-model="loginForm.password"
@@ -32,7 +32,7 @@
           prefix-icon="el-icon-lock"
           show-password
         />
-        
+
       </el-form-item>
 
       <el-button type="primary" style="width:100%;margin-bottom:30px;" @click="loginIn">登录</el-button>
@@ -98,14 +98,17 @@ export default {
 
 <style>
 .login-container {
-  background-color: #2d3a4b;
+  /*background-color: #2d3a4b;*/
+  background-image: url(http://q1x2lsqiy.bkt.clouddn.com/login_back.jpg) ;
+  background-repeat: no-repeat;
+  background-size: 100%;
   min-height: 100%;
   width: 100%;
   position: relative;
 }
 .login-form {
   position: absolute;
-  width: 520px; 
+  width: 520px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
