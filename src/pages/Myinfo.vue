@@ -31,18 +31,17 @@
     </div>
     </div>
     <div class="recommend">产品推荐
-      <el-carousel :interval="4000" type="card" height="200px" style="width: 400px">
+      <div class="block">
+        <el-carousel height="200px" style="width: 400px" indicator-position="outside">
+          <el-carousel-item v-for="(item,index) in goods" :key="index">
+            <el-row>
 
+              <el-col :span="24"><img class="img-container" @click="jumpToDetail(item)" :src="item.path"></el-col>
+            </el-row>
+          </el-carousel-item>
+        </el-carousel>
+      </div>
 
-        <el-carousel-item v-for="(item,index) in goods" :key="index">
-          <el-row>
-
-            <el-col :span="24"><img class="img-container" @click="jumpToDetail(item)" :src="item.path"></el-col>
-          </el-row>
-        </el-carousel-item>
-
-        
-      </el-carousel>
     </div>
     <div class="order">交易明细
       <div style="margin-top: 10px">
