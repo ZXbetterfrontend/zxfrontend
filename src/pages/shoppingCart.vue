@@ -148,7 +148,7 @@ export default {
           });
         }
       });
-      this.$router.push("/administrators")
+      this.$router.push("/home")
     },
     changeQuantity(row, type) {
       if (type > 0) {

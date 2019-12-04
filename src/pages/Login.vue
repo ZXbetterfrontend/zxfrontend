@@ -51,14 +51,20 @@ export default {
   data () {
     return {
       loginForm: {
-        username: 'admin',
-        password: 123
+        username: '',
+        password: '',
       }
     }
   },
   methods: {
     loginIn() {
-      this.$router.push('home')
+      console.log(this.loginForm)
+      if(this.loginForm.username == "userkino") {
+        this.$router.push('/home')
+
+      } else if (this.loginForm.username == 'admin') {
+        this.$router.push('/administrators')
+      }
     }
   }
 }
