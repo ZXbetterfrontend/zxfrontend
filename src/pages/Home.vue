@@ -9,7 +9,7 @@
                style="width: 40px; height: 40px;float: right;text-align: center;margin-top:8px;margin-right: 10px "
 
                :src="url"
-               :fit="fit"
+               :fit="fits"
 
              ></el-image>
 
@@ -52,7 +52,7 @@ export default {
       circleUrl: "https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png",
       username: 'kino',
       transitionName:'',
-      fits: ['fill'],
+      fits: 'fill',
       url: 'http://q1x2lsqiy.bkt.clouddn.com/logo.jpg',
     }
   },
