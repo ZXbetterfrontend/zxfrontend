@@ -75,6 +75,7 @@ export default {
   position: fixed;
   background-color: #2d3a4b;
   box-shadow: 0px 0px 6px rgba(1,1,1,0.2);
+  z-index: 1000;
 }
 .grid-content  {
   margin: 10px 0px 0px 20px;

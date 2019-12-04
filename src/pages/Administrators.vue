@@ -1,23 +1,27 @@
 <template>
-  <div class="home-contianer">
-    <div class="header-bar">
-      <el-row type="flex" justify="end">
+  <div>
+    <table>
+      <div class="header-bar">
+        <el-row type="flex" justify="end">
+          <el-col align-items="left" style="color: #FFFFFF; margin: auto;">中信银行贵金属理财宝</el-col>
+          <!-- <el-col :span="2">
+            <div class="grid-content shopping-cart ">
+              <div class="shopping-cart el-icon-shopping-cart-full">
+              </div>
+            </div>
+          </el-col> -->
+          <el-col :span="5">
+            <div class="grid-content user-container">
+              <div>
+                <el-avatar icon="el-icon-user-solid"></el-avatar>
+              </div>
+              <div class="user-container">{{username}}</div>
+            </div>
+          </el-col>
+        </el-row>
+      </div>
+    </table>
 
-        <el-col align-items="left" style="color: #FFFFFF; margin: auto;">Welcome {{username}}</el-col>
-        <el-col :span="2">
-          <div class="grid-content shopping-cart ">
-            <div class="shopping-cart el-icon-shopping-cart-full"></div>
-          </div>
-        </el-col>
-
-        <el-col :span="5">
-          <div class="grid-content user-container">
-            <div><el-avatar icon="el-icon-user-solid"></el-avatar></div>
-            <div class="user-container">{{username}}</div>
-          </div>
-        </el-col>
-      </el-row>
-    </div>
 
     <div type="flex" class="admin-content">
       <el-table :data="info" class="admin-content-table">
@@ -256,6 +260,7 @@ export default {
     position: fixed;
     background-color: #2d3a4b;
     box-shadow: 0px 0px 6px rgba(1,1,1,0.2);
+    z-index: 100;
   }
   .grid-content  {
     margin: 0px 0px 0px 20px;

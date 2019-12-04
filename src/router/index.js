@@ -37,6 +37,11 @@ export default new Router({
         {
           path: '/myinfo',
           component: MyInfo
+        },
+        {
+          path: '/shoppingcart',
+          name: 'shoppingCart',
+          component: shoppingCart
         }
       ]
     },
@@ -45,10 +50,10 @@ export default new Router({
       name: 'Administrators',
       component: Administrators
     },
-    {
-      path: '/shoppingcart',
-      name: 'shoppingCart',
-      component: shoppingCart
-    }
+    // {
+    //   path: '/shoppingcart',
+    //   name: 'shoppingCart',
+    //   component: shoppingCart
+    // }
   ]
 })
