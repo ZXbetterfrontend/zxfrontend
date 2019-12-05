@@ -18,8 +18,7 @@ Vue.config.productionTip = false
 Vue.prototype.$echarts = echarts
 
 /* eslint-disable no-new */
-$cookies.set('test', 12333) 
-console.log($cookies.keys())
+
 new Vue({
   el: '#app',
   router,

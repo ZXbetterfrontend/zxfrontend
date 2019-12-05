@@ -218,8 +218,8 @@ export default {
   color: #F56C6C;
   font-size: 40px;
 }
-.table-head {
-}
+/* .table-head {
+} */
 .table-title {
   color: #909399;
   text-align: left;
