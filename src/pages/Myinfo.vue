@@ -11,7 +11,7 @@
       <div class="name">
         <img src="http://q1x2lsqiy.bkt.clouddn.com/%E4%BA%A4%E6%98%93%E7%AE%A1%E7%90%86%20%281%29.png" style="float:left; height:25px; margin-right: 5px;">
         <div class="name-left">我的姓名:</div>
-        <div class="name-right">kino</div>
+        <div class="name-right">{{username}}</div>
       </div>
       <div class="rank">
         <img src="http://q1x2lsqiy.bkt.clouddn.com/%E7%AD%89%E7%BA%A7.png" style="float:left; height:25px; margin-right: 5px;">
@@ -52,7 +52,7 @@
         <el-table-column prop="ocount" label="商品数量" width="80px" ></el-table-column>
         <el-table-column prop="oprice" label="单价(人民币)"></el-table-column>
         <el-table-column prop="ototalprice" label="总价(人民币)"></el-table-column>
-        <el-table-column prop="evaluate" label="订单评价">
+        <el-table-column prop="rank" label="订单评价">
           <div class="block">
             <el-rate
               :value="randomstar()"
@@ -70,6 +70,7 @@
 export default {
   data () {
     return {
+      username: '',
       orderData: [],
       value2: null,
       colors: ['#99A9BF', '#F7BA2A', '#FF9900'],
@@ -124,14 +125,21 @@ export default {
     }
   },
   mounted() {
+    this.getinfo()
     this.$axios({
       method: 'get',
       url: '/api/order/history'
     }).then(res => {
       this.orderData = res.data.msg
+      this.orderData.forEach(ele => {
+        ele.rank = this.randomstar()
+      })
     })
   },
   methods: {
+    getinfo() {
+      this.username = this.$store.state.name
+    },
     randomstar() {
       return (Math.floor(Math.random()*2) + 3)
     }

@@ -9,6 +9,10 @@ import Administrators from '@/pages/Administrators'
 import Goods from '@/pages/Goods.vue'
 import MyInfo from '@/pages/Myinfo.vue'
 
+import analysis from '@/pages/Analysis.vue'
+import history from '@/pages/History.vue'
+
+
 
 Vue.use(Router)
 
@@ -48,7 +52,20 @@ export default new Router({
     {
       path: '/administrators',
       name: 'Administrators',
-      component: Administrators
+      component: Administrators,
+      children: [
+        {
+          path: '',
+          component: history,
+          name: 'History'
+        },
+        {
+          path: '/analysis',
+          component: analysis,
+          name: 'Analysis'
+        },
+       
+      ]
     },
     // {
     //   path: '/shoppingcart',
