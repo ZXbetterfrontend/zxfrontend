@@ -8,7 +8,7 @@
               <img src="http://q1x2lsqiy.bkt.clouddn.com/logo.jpg" style="width: 50px;float: right">
           </el-col>
           <el-col :span="19">
-              <h3 class="title" style="float: left;margin-right: 10px">中信银行贵金属理财宝</h3>
+              <h3 class="title" style="margin-right: 10px">中信银行贵金属理财宝</h3>
           </el-col>
         </el-row>
       </div>
