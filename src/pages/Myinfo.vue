@@ -5,28 +5,28 @@
       <div class="user-detail">
       <div class="id">
         <img src="http://q1x2lsqiy.bkt.clouddn.com/%E6%88%91%E7%9A%84%E8%B4%A6%E6%88%B7.png" style="float:left; height:25px; margin-right: 5px;">
-        <div class="id-left">我的账号:</div>
-        <div class="id-right">123456</div>
+        <div class="id-left">用户ID:</div>
+        <div class="id-right">{{userinfo.uid}}</div>
       </div>
       <div class="name">
         <img src="http://q1x2lsqiy.bkt.clouddn.com/%E4%BA%A4%E6%98%93%E7%AE%A1%E7%90%86%20%281%29.png" style="float:left; height:25px; margin-right: 5px;">
-        <div class="name-left">我的姓名:</div>
-        <div class="name-right">{{username}}</div>
+        <div class="name-left">用户名:</div>
+        <div class="name-right">{{userinfo.uname}}</div>
       </div>
       <div class="rank">
         <img src="http://q1x2lsqiy.bkt.clouddn.com/%E7%AD%89%E7%BA%A7.png" style="float:left; height:25px; margin-right: 5px;">
-        <div class="rank-left">我的等级:</div>
+        <div class="rank-left">等级:</div>
         <div class="rank-right">青铜</div>
       </div>
       <div class="score">
         <img src="http://q1x2lsqiy.bkt.clouddn.com/%E7%A7%AF%E5%88%86%20%281%29.png" style="float:left; height:25px; margin-right: 5px;">
-        <div class="score-left">我的积分:</div>
+        <div class="score-left">积分:</div>
         <div class="score-right">100</div>
       </div>
       <div class="property">
         <img src="http://q1x2lsqiy.bkt.clouddn.com/%E4%BA%A4%E6%98%93%E7%AE%A1%E7%90%86.png" style="float:left; height:25px; margin-right: 5px;">
-        <div class="property-left">我的资产:</div>
-        <div class="property-right">100，000元</div>
+        <div class="property-left">余额:</div>
+        <div class="property-right">{{userinfo.ubalance}}元</div>
       </div>
     </div>
     </div>
@@ -71,6 +71,7 @@ export default {
   data () {
     return {
       username: '',
+      userinfo: '',
       orderData: [],
       value2: null,
       colors: ['#99A9BF', '#F7BA2A', '#FF9900'],
@@ -138,7 +139,11 @@ export default {
   },
   methods: {
     getinfo() {
-      this.username = this.$store.state.name
+      // this.username = this.$store.state.name
+      this.$axios.get('/api/user/info').then(res => {
+        console.log(res.data)
+        this.userinfo = res.data.msg
+      })
     },
     randomstar() {
       return (Math.floor(Math.random()*2) + 3)

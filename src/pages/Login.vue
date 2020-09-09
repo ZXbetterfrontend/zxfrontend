@@ -5,10 +5,10 @@
       <div class="title-container">
         <el-row>
           <el-col :span="5">
-              <img src="http://q1x2lsqiy.bkt.clouddn.com/logo.jpg" style="width: 50px;float: right">
+              <img src="http://q1x2lsqiy.bkt.clouddn.com/logo.png" style="width: 50px;float: right">
           </el-col>
           <el-col :span="19">
-              <h3 class="title" style="float: left;margin-right: 10px">中信银行贵金属理财宝</h3>
+              <h3 class="title" style=";margin-right: 10px">中信银行贵金属理财宝</h3>
           </el-col>
         </el-row>
       </div>
@@ -86,6 +86,7 @@ export default {
         } else if (res.data.code == 1) {
           this.$store.commit('setname',this.loginForm.username)
           this.$router.push('/administrators')
+          this.$store.commit('setname', this.loginForm.username)
           this.$message({
             type: 'success',
             message: `登录成功`

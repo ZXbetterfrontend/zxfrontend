@@ -16,6 +16,7 @@ Vue.prototype.$axios= axios
 Vue.use(ElementUI)
 Vue.config.productionTip = false
 Vue.prototype.$echarts = echarts
+Vue.prototype.$test = 'test'
 
 /* eslint-disable no-new */
 

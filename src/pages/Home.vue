@@ -31,8 +31,10 @@
 
           
         </el-col>
-         <el-col :span="2"><div class="grid-content  ">
-          <div class="login-out " @click="loginout">退出</div></div>
+         <el-col :span="2">
+          
+            <div class="login-out login-out-word" @click="loginout">退出</div>
+          
         </el-col>
       </el-row>
     </div>
@@ -61,7 +63,7 @@ export default {
       username: 'kino',
       transitionName:'',
       fits: 'fill',
-      url: 'http://q1x2lsqiy.bkt.clouddn.com/logo.jpg',
+      url: 'http://q1x2lsqiy.bkt.clouddn.com/logo.png',
     }
   },
   watch: {//使用watch 监听$router的变化
@@ -138,9 +140,13 @@ export default {
   height: 100%;
   color: #eee;
   font-size: 14px;
-  line-height: 48px;
+  line-height: 44px;
   vertical-align: middle;
+  padding: 7px;
   cursor: pointer;
+}
+.login-out-word {
+  margin-top: 3px;
 }
 .goods-container {
   /* margin: 75px 0 0 0; */

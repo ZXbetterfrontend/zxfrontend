@@ -192,6 +192,7 @@ export default {
     return {
       //产品添加模块begin
       ruleForm: {
+        username: '',
         name: '', // 商品名称
         /*
         spec: '', // 商品规格
@@ -217,7 +218,7 @@ export default {
       circleUrl: "https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png",
       username: 'Administrator',
       fits: 'fill',
-      url: 'http://q1x2lsqiy.bkt.clouddn.com/logo.jpg',
+      url: 'http://q1x2lsqiy.bkt.clouddn.com/logo.png',
       saleHistory: [{
         productName: '守护之羽',
         productId: '13488',
@@ -332,7 +333,7 @@ export default {
     } 
   }, 
   created() {
-   
+    this.username = this.$store.state.name
     this.getallhistory()
   },
   methods:{
@@ -352,6 +353,8 @@ export default {
       
     },
     exita:function(){
+      this.$store.commit('clearname')
+      this.$store.commit('cleargid')
       this.$router.push('/')
     },
     // 产品添加信息函数提交重置begin

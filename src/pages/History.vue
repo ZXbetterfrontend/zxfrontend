@@ -18,7 +18,7 @@
           layout="prev, pager, next"
           :total="saleHistory.length"
           :current-page="currentpage"
-          :page-sizes="pagesize"
+          :page-size="pagesize"
         ></el-pagination>
       </div>
     </div>
@@ -40,7 +40,7 @@ export default {
       circleUrl: "https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png",
       username: 'Administrator',
       fits: 'fill',
-      url: 'http://q1x2lsqiy.bkt.clouddn.com/logo.jpg',
+      url: 'http://q1x2lsqiy.bkt.clouddn.com/logo.png',
       saleHistory: [],
       currentPageData: [],
     }
